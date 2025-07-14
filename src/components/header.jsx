@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
-import { User, Home, Map, Bell, Building, TreePine, Users, BarChart3, LogOut } from "lucide-react";
-
+import {
+  User,
+  Home,
+  Map,
+  Bell,
+  Building,
+  TreePine,
+  Users,
+  BarChart3,
+  LogOut,
+  Menu,
+  X,
+} from "lucide-react";
 import { useAuth } from "../context/authContext";
 
-const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
+const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
   const { user, logout } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -23,6 +34,14 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [showDropdown]);
+
+  const navItems = [
+    { name: "Dashboard", icon: BarChart3 },
+    { name: "Listings", icon: Building },
+    { name: "Map View", icon: Map },
+    { name: "Builders", icon: Users },
+    { name: "Communities", icon: TreePine },
+  ];
 
   return (
     <header className="bg-white/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-200/50">
@@ -46,15 +65,23 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             </div>
           </div>
 
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-700 p-2 rounded-lg hover:bg-blue-50 transition"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {[
-              { name: "Dashboard", icon: BarChart3 },
-              { name: "Listings", icon: Building },
-              { name: "Map View", icon: Map },
-              { name: "Builders", icon: Users },
-              { name: "Communities", icon: TreePine },
-            ].map((item) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href="/"
@@ -66,14 +93,14 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             ))}
           </nav>
 
-          {/* Right side */}
+          {/* Right Side */}
           <div className="flex items-center space-x-4 dropdown-container relative">
             <button className="relative p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-xl transition-all duration-200">
-                <Bell className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
-                  3
-                </span>
-              </button>
+              <Bell className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 h-4 w-4 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">
+                3
+              </span>
+            </button>
             {user ? (
               <div className="relative dropdown-container">
                 <button
@@ -100,7 +127,6 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
                     />
                   </svg>
                 </button>
-
                 {showDropdown && (
                   <div className="absolute right-0 top-full mt-2 w-56 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 py-2 z-50">
                     <button
@@ -130,7 +156,7 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             ) : (
               <button
                 onClick={() => setCurrentPage("auth")}
-                className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-3 rounded-2xl font-bold hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-6 py-2 rounded-xl font-bold hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Get Started
               </button>
@@ -139,17 +165,11 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Enhanced Mobile Navigation */}
+      {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200/50">
           <div className="px-4 pt-4 pb-6 space-y-2">
-            {[
-              { name: "Dashboard", icon: BarChart3 },
-              { name: "Listings", icon: Building },
-              { name: "Map View", icon: Map },
-              { name: "Builders", icon: Users },
-              { name: "Communities", icon: TreePine },
-            ].map((item) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href="#"
@@ -165,4 +185,5 @@ const header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
     </header>
   );
 };
-export default header;
+
+export default Header;
