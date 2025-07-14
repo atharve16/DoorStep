@@ -8,7 +8,7 @@ const createAuthHeader = (email, password) => {
   return `Basic ${credentials}`;
 };
 
-const BASE_URL = "http://localhost:8080/api";
+const BASE_URL = "https://dashboard-server-vs7h.onrender.com/api";
 
 const authApi = {
   login: async (email, password) => {
