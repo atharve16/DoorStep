@@ -34,7 +34,6 @@ const Auth = ({ setCurrentPage }) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-100 px-4 py-12">
       <div className="w-full max-w-md bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-3xl p-8 space-y-6">
-        {/* Header */}
         <div className="text-center space-y-3">
           <div
             onClick={() => setCurrentPage("home")}
@@ -54,7 +53,6 @@ const Auth = ({ setCurrentPage }) => {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <input
@@ -102,7 +100,6 @@ const Auth = ({ setCurrentPage }) => {
           </button>
         </form>
 
-        {/* Switch Mode */}
         <div className="text-center text-sm text-gray-600">
           {isLogin ? (
             <>

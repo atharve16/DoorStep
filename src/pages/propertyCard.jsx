@@ -32,11 +32,9 @@ const PropertyCard = ({ property }) => {
   const handleShare = (e) => {
     e.stopPropagation();
     navigator.clipboard.writeText(window.location.href);
-    // You could add a toast notification here
   };
 
   const handleViewDetails = () => {
-    // Navigate to property details page
     console.log("View details for:", property.id);
   };
 

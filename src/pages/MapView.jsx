@@ -4,7 +4,6 @@ import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
 const MapView = ({ properties }) => {
-  // Filter out properties without valid coordinates
   const validProperties = properties.filter(
     (home) =>
       home.coordinates &&
@@ -12,7 +11,6 @@ const MapView = ({ properties }) => {
       typeof home.coordinates.lng === "number"
   );
 
-  // Default to Atlanta if no valid property
   const center = validProperties.length
     ? [validProperties[0].coordinates.lat, validProperties[0].coordinates.lng]
     : [33.749, -84.388];

@@ -47,7 +47,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
     <header className="bg-white/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
           <div className="flex items-center group">
             <div className="flex-shrink-0 flex items-center">
               <div className="relative">
@@ -65,7 +64,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -79,7 +77,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             </button>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <a
@@ -93,7 +90,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
             ))}
           </nav>
 
-          {/* Right Side */}
           <div className="flex items-center space-x-4 dropdown-container relative">
             <button className="relative p-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-xl transition-all duration-200">
               <Bell className="h-5 w-5" />
@@ -165,7 +161,6 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200/50">
           <div className="px-4 pt-4 pb-6 space-y-2">

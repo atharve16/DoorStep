@@ -60,7 +60,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
 
   return (
     <>
-      {/* Enhanced Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300"
@@ -68,14 +67,12 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
         />
       )}
 
-      {/* Enhanced Sidebar */}
       <div
         className={`fixed inset-y-0 left-0 z-50 w-96 bg-white/95 backdrop-blur-lg shadow-2xl transform transition-all duration-300 ease-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="h-full flex flex-col">
-          {/* Header */}
           <div className="p-6 border-b border-gray-200/50 bg-gradient-to-r from-blue-50 to-purple-50">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -106,9 +103,7 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
             </div>
           </div>
 
-          {/* Content */}
           <div className="flex-1 overflow-y-auto p-6 space-y-8">
-            {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-2xl border border-blue-200/50">
                 <div className="text-2xl font-bold text-blue-700">1,234</div>
@@ -124,7 +119,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
               </div>
             </div>
 
-            {/* Price Range */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <DollarSign className="h-5 w-5 text-green-600 mr-2" />
@@ -146,7 +140,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
               </select>
             </div>
 
-            {/* Popular Cities */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <MapPin className="h-5 w-5 text-blue-600 mr-2" />
@@ -172,7 +165,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
               </div>
             </div>
 
-            {/* Home Features */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-3">
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center">
@@ -216,7 +208,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
               </div>
             </div>
 
-            {/* Square Footage */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <Square className="h-5 w-5 text-orange-600 mr-2" />
@@ -233,7 +224,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
               />
             </div>
 
-            {/* Year Built */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <Calendar className="h-5 w-5 text-green-600 mr-2" />
@@ -249,8 +239,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
                 placeholder="e.g. 2020"
               />
             </div>
-
-            {/* Status */}
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <CheckCircle className="h-5 w-5 text-emerald-600 mr-2" />
@@ -279,7 +267,6 @@ const filtersSidebar = ({ isOpen, setIsOpen, filters, setFilters }) => {
             </div>
           </div>
 
-          {/* Footer */}
           <div className="p-6 border-t border-gray-200/50 bg-gradient-to-r from-blue-50 to-purple-50">
             <button
               onClick={() => setIsOpen(false)}

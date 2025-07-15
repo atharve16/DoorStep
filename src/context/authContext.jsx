@@ -2,7 +2,6 @@ import React, { useState, useEffect, createContext, useContext } from "react";
 
 const AuthContext = createContext();
 
-// Helper function to create Basic Auth header
 const createAuthHeader = (email, password) => {
   const credentials = btoa(`${email}:${password}`);
   return `Basic ${credentials}`;
@@ -114,7 +113,6 @@ const authApi = {
   },
 };
 
-// Auth Provider
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -168,7 +166,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    authApi.logout(); // Call backend logout
+    authApi.logout();
     setUser(null);
     try {
       if (typeof localStorage !== "undefined") {
@@ -182,7 +180,6 @@ const AuthProvider = ({ children }) => {
   const updateUserProfile = async (userData) => {
     try {
       const result = await authApi.updateUser(userData, user);
-      // Update local user data with new information
       const updatedUser = { ...user, ...userData };
       setUser(updatedUser);
       try {
@@ -201,7 +198,7 @@ const AuthProvider = ({ children }) => {
   const deleteUserAccount = async (id) => {
     try {
       const result = await authApi.deleteUser(id, user);
-      logout(); // Auto logout after account deletion
+      logout();
       return result;
     } catch (error) {
       throw error;

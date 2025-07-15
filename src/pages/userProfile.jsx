@@ -31,12 +31,10 @@ const UserProfile = ({ setCurrentPage }) => {
 
   const [userDetails, setUserDetails] = useState(null);
 
-  // Fetch user details on component mount
   useEffect(() => {
     const fetchUserDetails = async () => {
       if (user && user.email) {
         try {
-          // Get all users and find current user by email
           const allUsers = await authApi.getAllUsers();
           const currentUser = allUsers.find((u) => u.email === user.email);
           if (currentUser) {
@@ -64,7 +62,6 @@ const UserProfile = ({ setCurrentPage }) => {
       ...prev,
       [name]: value,
     }));
-    // Clear errors when user starts typing
     if (error) setError("");
     if (success) setSuccess("");
   };
@@ -74,7 +71,6 @@ const UserProfile = ({ setCurrentPage }) => {
     setError("");
     setSuccess("");
 
-    // Validation
     if (!formData.name.trim() || !formData.email.trim()) {
       setError("Name and email are required");
       setLoading(false);
@@ -92,12 +88,11 @@ const UserProfile = ({ setCurrentPage }) => {
         id: userDetails.id,
         name: formData.name.trim(),
         email: formData.email.trim(),
-        password: formData.password || userDetails.password, // Keep existing password if not changed
+        password: formData.password || userDetails.password,
       };
 
       await updateUserProfile(updateData);
 
-      // Update local user details
       setUserDetails((prev) => ({
         ...prev,
         name: updateData.name,
@@ -127,7 +122,6 @@ const UserProfile = ({ setCurrentPage }) => {
     try {
       await deleteUserAccount(userDetails.id);
       setSuccess("Account deleted successfully!");
-      // User will be logged out automatically in the deleteUserAccount function
       setTimeout(() => {
         setCurrentPage("home");
       }, 2000);

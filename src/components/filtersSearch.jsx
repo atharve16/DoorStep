@@ -18,7 +18,6 @@ const filtersSearch = ({
     <div className="bg-white/80 backdrop-blur-lg shadow-sm border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col space-y-4">
-          {/* Search Bar */}
           <div className="relative">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <input
@@ -33,10 +32,8 @@ const filtersSearch = ({
             </div>
           </div>
 
-          {/* Filters and Sort */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
             <div className="flex flex-wrap items-center gap-3">
-              {/* Quick Filter Pills */}
               <div className="flex items-center space-x-2">
                 <select
                   value={filters.beds}
@@ -75,7 +72,6 @@ const filtersSearch = ({
                 </select>
               </div>
 
-              {/* Advanced Filters Button */}
               <button
                 onClick={() => setIsSidebarOpen(true)}
                 className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-800 to-purple-700 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -85,7 +81,6 @@ const filtersSearch = ({
               </button>
             </div>
 
-            {/* Sort and Results Count */}
             <div className="flex items-center space-x-4">
               <div className="text-sm text-gray-600">
                 <span className="font-semibold text-gray-900">{resultsCount}</span> homes found

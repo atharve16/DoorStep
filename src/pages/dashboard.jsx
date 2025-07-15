@@ -92,7 +92,6 @@ const dashboard = () => {
       });
   }, [properties, searchTerm, sortBy, filters]);
 
-  // Calculate pagination
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -103,7 +102,6 @@ const dashboard = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Reset to first page when filters change
   React.useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, sortBy, filters]);
@@ -143,7 +141,6 @@ const dashboard = () => {
         setIsSidebarOpen={setIsSidebarOpen}
       />
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex">
           <div className="w-full flex">
