@@ -55,7 +55,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
               </div>
               <div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-700 bg-clip-text text-transparent">
-                  Panthera Infotech
+                  DoorStep
                 </span>
                 <div className="text-xs text-gray-500 -mt-1">
                   Find Your Perfect Home

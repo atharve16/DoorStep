@@ -40,7 +40,7 @@ const Auth = ({ setCurrentPage }) => {
             className="flex items-center justify-center cursor-pointer group"
           >
             <span className="ml-3 text-2xl font-black bg-gradient-to-r from-gray-900 via-blue-800 to-purple-700 bg-clip-text text-transparent">
-              Panthera Infotech
+              DoorStep
             </span>
           </div>
           <h2 className="text-3xl font-extrabold text-gray-800">

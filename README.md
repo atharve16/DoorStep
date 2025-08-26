@@ -1,9 +1,4 @@
-# 🏠 New Home Dashboard – Frontend
-
-This is the **frontend** for a real estate listing web application inspired by the layout of [NewHomeSource](https://www.newhomesource.com/plan/2-story-loudermilk-homes-atlanta-ga/3175090). The project replicates a Power BI-style dashboard using React with dummy JSON data (no backend integration yet).
-
-> 🚧 **Work in Progress**: This application is under active development and is part of an assignment for Panthera Infotech.
-
+# 🏠 DoorStep – Frontend
 ---
 
 ## 🔗 Live Demo
