@@ -17,10 +17,9 @@ const authApi = {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-
       if (!res.ok) throw new Error("Invalid credentials");
-      const message = await res.text();
-      return { email, password };
+      const userData = await res.json();
+      return userData;
     } catch (error) {
       throw new Error("Login failed");
     }
@@ -34,8 +33,8 @@ const authApi = {
         body: JSON.stringify({ name, email, password }),
       });
       if (!res.ok) throw new Error("Registration failed");
-      const message = await res.text();
-      return { name, email, password };
+      const userData = await res.json();
+      return userData;
     } catch (error) {
       throw new Error("Registration failed");
     }
@@ -116,7 +115,7 @@ const authApi = {
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-      const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState([]);
 
   useEffect(() => {
     try {
@@ -134,15 +133,18 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const userData = await authApi.login(email, password);
-      setUser(userData);
+
+      const userWithCredentials = { ...userData, password };
+      setUser(userWithCredentials);
+
       try {
         if (typeof localStorage !== "undefined") {
-          localStorage.setItem("user", JSON.stringify(userData));
+          localStorage.setItem("user", JSON.stringify(userWithCredentials));
         }
       } catch (error) {
         console.error("Error saving user to storage:", error);
       }
-      return userData;
+      return userWithCredentials;
     } catch (error) {
       throw error;
     }
@@ -151,15 +153,18 @@ const AuthProvider = ({ children }) => {
   const signup = async (name, email, password) => {
     try {
       const userData = await authApi.signup(name, email, password);
-      setUser(userData);
+
+      const userWithCredentials = { ...userData, password };
+      setUser(userWithCredentials);
+
       try {
         if (typeof localStorage !== "undefined") {
-          localStorage.setItem("user", JSON.stringify(userData));
+          localStorage.setItem("user", JSON.stringify(userWithCredentials));
         }
       } catch (error) {
         console.error("Error saving user to storage:", error);
       }
-      return userData;
+      return userWithCredentials;
     } catch (error) {
       throw error;
     }
@@ -197,6 +202,9 @@ const AuthProvider = ({ children }) => {
 
   const deleteUserAccount = async (id) => {
     try {
+      console.log("User credentials being sent:", user);
+      console.log("Auth header:", createAuthHeader(user.email, user.password));
+
       const result = await authApi.deleteUser(id, user);
       logout();
       return result;
@@ -204,7 +212,7 @@ const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  
+
   useEffect(() => {
     const fetchProperties = async () => {
       try {
@@ -233,7 +241,7 @@ const AuthProvider = ({ children }) => {
         deleteUserAccount,
         loading,
         authApi,
-        properties
+        properties,
       }}
     >
       {children}

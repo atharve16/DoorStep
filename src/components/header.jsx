@@ -104,7 +104,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, setCurrentPage }) => {
                   className="flex items-center space-x-3 bg-white/60 backdrop-blur-md rounded-2xl px-4 py-3 hover:bg-white/80 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg"
                 >
                   <div className="w-8 h-8 bg-blue-900 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                    {user.name?.charAt(0) || "U"}
+                    {user.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                   <span className="font-semibold text-gray-700 hidden sm:block">
                     {user.name}
